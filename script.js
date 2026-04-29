@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   عرب رين — Arab Reen RP  |  Interactions & Animations
+     رين — Arab Reen RP  |  Interactions & Animations
 ═══════════════════════════════════════════════════════════════ */
 
 (function() {

@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
    سيرفر رين — REN RP
-   تصميم احترافي  •  Dark + Gold + Crimson  •  Editorial luxury
+   تصميم احترافي  •  Dark + Purple + Crimson  •  Editorial luxury
 ═══════════════════════════════════════════════════════════════ */
 
 :root {
@@ -11,32 +11,32 @@
   --bg-card:        #131321;
   --bg-elevated:    #1a1a2a;
 
-  /* الأكسنت */
-  --gold:           #d4a44b;
-  --gold-bright:    #f0c264;
-  --gold-deep:      #8a6520;
+  /* الأكسنت — بنفسجي */
+  --gold:           #b06bff;
+  --gold-bright:    #d4a4ff;
+  --gold-deep:      #6c2bd9;
   --crimson:        #c0392b;
   --crimson-bright: #e74c3c;
   --emerald:        #27ae60;
 
-  /* النصوص */
-  --text:           #f5f1e8;
-  --text-soft:      #c8c2b3;
-  --text-muted:     #7a7568;
-  --text-dim:       #4a4538;
+  /* النصوص — أوضح */
+  --text:           #f6f4ff;
+  --text-soft:      #d8d3e6;
+  --text-muted:     #8e87a8;
+  --text-dim:       #524c6b;
 
   /* الحدود */
-  --border:         #1f1f2e;
-  --border-bright:  #2d2d42;
-  --border-gold:    rgba(212, 164, 75, 0.25);
+  --border:         #1f1d2e;
+  --border-bright:  #2e2b46;
+  --border-gold:    rgba(176, 107, 255, 0.28);
 
   /* المسافات */
   --sidebar-w:      280px;
-  --max-content:    920px;
+  --max-content:    960px;
 
-  /* الخطوط */
-  --font-display:   'Reem Kufi', 'Cairo', system-ui, sans-serif;
-  --font-body:      'Tajawal', 'Cairo', system-ui, sans-serif;
+  /* الخطوط — أوضح وأنظف */
+  --font-display:   'Reem Kufi', 'IBM Plex Sans Arabic', 'Cairo', system-ui, sans-serif;
+  --font-body:      'IBM Plex Sans Arabic', 'Readex Pro', 'Tajawal', 'Cairo', system-ui, sans-serif;
   --font-mono:      'JetBrains Mono', 'Courier New', monospace;
 }
 
@@ -56,12 +56,15 @@ body {
   font-family: var(--font-body);
   background: var(--bg);
   color: var(--text);
-  line-height: 1.7;
-  font-size: 16px;
+  line-height: 1.8;
+  font-size: 16.5px;
   font-weight: 400;
   overflow-x: hidden;
   min-height: 100vh;
   position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -88,8 +91,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(212, 164, 75, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212, 164, 75, 0.025) 1px, transparent 1px);
+    linear-gradient(rgba(176, 107, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(176, 107, 255, 0.025) 1px, transparent 1px);
   background-size: 50px 50px;
   z-index: -3;
   pointer-events: none;
@@ -253,7 +256,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   place-items: center;
   color: var(--gold);
   flex-shrink: 0;
-  filter: drop-shadow(0 0 12px rgba(212, 164, 75, 0.3));
+  filter: drop-shadow(0 0 12px rgba(176, 107, 255, 0.3));
 }
 
 .brand-mark svg {
@@ -318,7 +321,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 }
 
 .nav-link.active {
-  background: linear-gradient(90deg, rgba(212, 164, 75, 0.12) 0%, transparent 100%);
+  background: linear-gradient(90deg, rgba(176, 107, 255, 0.12) 0%, transparent 100%);
   color: var(--gold);
 }
 
@@ -531,13 +534,13 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 .btn-primary {
   background: var(--gold);
   color: var(--bg-deep);
-  box-shadow: 0 4px 20px rgba(212, 164, 75, 0.25);
+  box-shadow: 0 4px 20px rgba(176, 107, 255, 0.25);
 }
 
 .btn-primary:hover {
   background: var(--gold-bright);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(212, 164, 75, 0.4);
+  box-shadow: 0 8px 30px rgba(176, 107, 255, 0.4);
 }
 
 .btn-primary svg {
@@ -557,7 +560,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 .btn-ghost:hover {
   border-color: var(--gold);
   color: var(--gold);
-  background: rgba(212, 164, 75, 0.05);
+  background: rgba(176, 107, 255, 0.05);
 }
 
 .hero-stats {
@@ -717,6 +720,20 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  scroll-margin-top: 80px;
+}
+
+/* تأثير عند ربط هاش بالقانون */
+.rule:target {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, rgba(176, 107, 255, 0.08) 0%, var(--bg-elevated) 100%);
+  box-shadow: 0 0 0 1px var(--gold), 0 8px 30px rgba(176, 107, 255, 0.15);
+  animation: target-flash 1.4s ease;
+}
+
+@keyframes target-flash {
+  0%   { box-shadow: 0 0 0 4px rgba(176, 107, 255, 0.5), 0 8px 30px rgba(176, 107, 255, 0.4); }
+  100% { box-shadow: 0 0 0 1px var(--gold), 0 8px 30px rgba(176, 107, 255, 0.15); }
 }
 
 .rule::before {
@@ -754,7 +771,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   font-size: 12px;
   font-weight: 700;
   color: var(--gold);
-  background: rgba(212, 164, 75, 0.08);
+  background: rgba(176, 107, 255, 0.08);
   border: 1px solid var(--border-gold);
   padding: 5px 9px;
   border-radius: 5px;
@@ -790,6 +807,109 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   color: var(--gold);
 }
 
+/* ─── زر نسخ رابط القانون (#) ────────────────────────────── */
+.rule-link {
+  position: absolute;
+  top: 10px;
+  inset-inline-end: 10px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  background: rgba(176, 107, 255, 0.06);
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-2px);
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.rule:hover .rule-link,
+.rule:target .rule-link {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rule-link:hover {
+  background: rgba(176, 107, 255, 0.18);
+  border-color: var(--border-gold);
+  color: var(--gold-bright);
+  transform: translateY(-1px) scale(1.05);
+}
+
+.rule-link:active { transform: scale(0.95); }
+
+.rule-link.copied {
+  background: rgba(39, 174, 96, 0.18);
+  border-color: rgba(39, 174, 96, 0.4);
+  color: var(--emerald);
+}
+
+@media (max-width: 768px) {
+  .rule-link {
+    opacity: 0.6;
+    transform: none;
+  }
+}
+
+/* ─── تنبيه النسخ (Toast) ───────────────────────────────── */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  inset-inline-start: 50%;
+  transform: translateX(50%) translateY(120%);
+  background: linear-gradient(135deg, var(--bg-elevated), var(--bg-card));
+  border: 1px solid var(--border-gold);
+  border-inline-start: 3px solid var(--gold);
+  color: var(--text);
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 500;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(176, 107, 255, 0.15);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-width: 90%;
+}
+
+[dir="rtl"] .toast {
+  transform: translateX(-50%) translateY(120%);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+[dir="rtl"] .toast.show {
+  transform: translateX(50%) translateY(0);
+}
+
+.toast-icon {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  background: var(--gold);
+  color: var(--bg-deep);
+  border-radius: 50%;
+  font-weight: 900;
+  font-size: 13px;
+}
+
 /* ─── Concept Cards ──────────────────────────────────────── */
 .concept-cards {
   display: grid;
@@ -815,7 +935,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   inset-inline-end: 0;
   width: 80px;
   height: 80px;
-  background: radial-gradient(circle at 100% 100%, rgba(212, 164, 75, 0.12) 0%, transparent 60%);
+  background: radial-gradient(circle at 100% 100%, rgba(176, 107, 255, 0.12) 0%, transparent 60%);
   pointer-events: none;
   transition: opacity 0.3s ease;
   opacity: 0;
@@ -866,7 +986,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 }
 
 .info-box.warn {
-  background: linear-gradient(135deg, rgba(212, 164, 75, 0.06) 0%, var(--bg-card) 100%);
+  background: linear-gradient(135deg, rgba(176, 107, 255, 0.06) 0%, var(--bg-card) 100%);
   border-color: var(--border-gold);
 }
 
@@ -891,7 +1011,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 .note-line {
   margin-top: 16px !important;
   padding: 12px 16px;
-  background: rgba(212, 164, 75, 0.08);
+  background: rgba(176, 107, 255, 0.08);
   border-inline-start: 3px solid var(--gold);
   border-radius: 6px;
   font-size: 14px !important;
@@ -1000,7 +1120,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   height: 36px;
   display: grid;
   place-items: center;
-  background: rgba(212, 164, 75, 0.08);
+  background: rgba(176, 107, 255, 0.08);
   border-radius: 8px;
   border: 1px solid var(--border-gold);
 }
@@ -1036,7 +1156,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 .price-row.highlight {
   margin-top: 4px;
   padding: 12px 14px;
-  background: rgba(212, 164, 75, 0.08);
+  background: rgba(176, 107, 255, 0.08);
   border: 1px solid var(--border-gold);
   border-radius: 8px;
 }
@@ -1090,7 +1210,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 }
 
 .ct-row.highlight {
-  background: linear-gradient(90deg, rgba(212, 164, 75, 0.08) 0%, transparent 100%);
+  background: linear-gradient(90deg, rgba(176, 107, 255, 0.08) 0%, transparent 100%);
 }
 
 .ct-row.highlight > div:first-child { color: var(--gold); font-weight: 600; }
@@ -1154,7 +1274,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   letter-spacing: 2px;
   color: var(--gold);
   padding: 4px 10px;
-  background: rgba(212, 164, 75, 0.1);
+  background: rgba(176, 107, 255, 0.1);
   border: 1px solid var(--border-gold);
   border-radius: 4px;
   text-transform: uppercase;
@@ -1202,7 +1322,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   font-size: 11px;
   font-weight: 700;
   color: var(--gold);
-  background: rgba(212, 164, 75, 0.08);
+  background: rgba(176, 107, 255, 0.08);
   border: 1px solid var(--border-gold);
   width: 24px;
   height: 22px;
@@ -1263,7 +1383,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(212, 164, 75, 0.1) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 50% 0%, rgba(176, 107, 255, 0.1) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -1274,7 +1394,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 
 .duration-card.highlight {
   border-color: var(--border-gold);
-  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(212, 164, 75, 0.04) 100%);
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(176, 107, 255, 0.04) 100%);
 }
 
 .dc-label {
@@ -1330,7 +1450,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   inset-inline-end: -10%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(212, 164, 75, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(176, 107, 255, 0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 

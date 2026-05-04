@@ -154,10 +154,91 @@
 
   // ─── Keyboard nav ─────────────────────────────────────
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+    if (e.key === 'Escape' && sidebar && sidebar.classList.contains('open')) {
       sidebar.classList.remove('open');
       menuToggle.classList.remove('open');
     }
   });
+
+  // ─── Copy link to rule (#) ────────────────────────────
+  const toast = document.getElementById('toast');
+  let toastTimeout = null;
+
+  function showToast(message) {
+    if (!toast) return;
+    const text = toast.querySelector('.toast-text');
+    if (text && message) text.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2200);
+  }
+
+  function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+    // Fallback لمتصفحات قديمة
+    return new Promise((resolve, reject) => {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        resolve();
+      } catch (err) {
+        document.body.removeChild(textArea);
+        reject(err);
+      }
+    });
+  }
+
+  document.querySelectorAll('.rule-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const hash = link.getAttribute('data-copy') || link.getAttribute('href');
+      if (!hash) return;
+
+      // تكوين الرابط الكامل
+      const fullUrl = window.location.origin + window.location.pathname + hash;
+
+      // تحديث الهاش في المتصفح والتمرير لـ القانون
+      const target = document.querySelector(hash);
+      if (target) {
+        history.replaceState(null, '', hash);
+        const top = target.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+
+      // نسخ الرابط للحافظة
+      copyToClipboard(fullUrl).then(() => {
+        link.classList.add('copied');
+        link.textContent = '✓';
+        showToast('تم نسخ رابط القانون');
+        setTimeout(() => {
+          link.classList.remove('copied');
+          link.textContent = '#';
+        }, 1600);
+      }).catch(() => {
+        showToast('تعذر نسخ الرابط');
+      });
+    });
+  });
+
+  // ─── التمرير للقانون عند فتح الصفحة برابط هاش ─────────
+  if (window.location.hash) {
+    setTimeout(() => {
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        const top = target.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }, 1600);
+  }
 
 })();
